@@ -77,9 +77,10 @@ class GoutteFactory implements DriverFactory
             $clientArguments = array();
 
             if (class_exists('Symfony\Component\HttpClient\HttpClient')) {
-                $clientArguments = array(
-                    \Symfony\Component\HttpClient\HttpClient::create($config['server_parameters'])
-                );
+                $httpClient = new Definition('Symfony\Component\HttpClient\HttpClient');
+                $httpClient->setFactory('Symfony\Component\HttpClient\HttpClient::create');
+                $httpClient->setArgument(0, $config['server_parameters']);
+                $clientArguments = array($httpClient);
             }
         } elseif ($this->isGoutte1()) {
             $guzzleClient = $this->buildGuzzle3Client($config['guzzle_parameters']);

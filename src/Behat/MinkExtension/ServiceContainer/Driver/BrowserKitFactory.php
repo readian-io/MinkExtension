@@ -39,6 +39,15 @@ class BrowserKitFactory implements DriverFactory
      */
     public function configure(ArrayNodeDefinition $builder)
     {
+        $builder
+            ->children()
+                ->arrayNode('http_client_parameters')
+                    ->useAttributeAsKey('key')
+                    ->prototype('variable')->end()
+                ->info('Set parameters on HttpClient (see https://symfony.com/doc/current/reference/configuration/framework.html#http-client)')
+                ->end()
+            ->end()
+        ;
     }
 
     /**

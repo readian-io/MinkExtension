@@ -24,7 +24,7 @@
         "php": ">=7.4",
         "behat/behat": "^3.0.5",
         "behat/mink": "^1.5",
-        "symfony/config": "^4.4 || ^5.0 || ^6.0"
+        "symfony/config": "^4.4 || ^5.0 || ^6.0 || ^7.0"
     },
     "replace": {
         "behat/mink-extension": "self.version"
